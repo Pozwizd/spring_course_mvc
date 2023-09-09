@@ -1,6 +1,12 @@
 package com.learn.spring.mvc;
 
+import jakarta.validation.constraints.Size;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Employee {
+    @Size(min = 2, message = "name must be min 2 symbols")
     private String name;
     private String surname;
 
@@ -8,8 +14,24 @@ public class Employee {
 
     private String department;
 
-    public Employee() {
+    private Map<String, String> departments;
+
+
+    public Map<String, String> getDepartments() {
+        return departments;
     }
+
+    public void setDepartments(Map<String, String> departments) {
+        this.departments = departments;
+    }
+
+    public Employee() {
+        departments = new HashMap<>();
+        departments.put("Information Technology","IT");
+        departments.put("Human Resources","HR");
+        departments.put("Sales", "Sales");
+    }
+
 
     public String getName() {
         return name;

@@ -1,4 +1,3 @@
-<jsp:useBean id="employee" scope="request" type="javax.xml.stream.util.StreamReaderDelegate"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +9,11 @@
 
 <%--Your name: ${param.employeeName}--%>
 Your name: ${employee.name}
+<br>
 Your surname: ${employee.surname}
+<br>
 Your salary: ${employee.salary}
+<br>
+Your department ${employee.department}
 </body>
 </html>
