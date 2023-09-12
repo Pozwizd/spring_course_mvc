@@ -1,15 +1,16 @@
 package com.learn.spring.mvc;
 
 
-
+import com.learn.spring.mvc.validation.CheckEmail;
 
 import javax.validation.constraints.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Employee {
 
-    @Size(min = 3, message = "Name must be bigger 2 symbols")
+    @Size(min = 3, message = "Name must be bigger 3 symbols")
     private String name;
 
     @NotBlank(message = "surname is required field")
@@ -30,6 +31,12 @@ public class Employee {
     private String[] languages;
 
     private Map<String, String> languageMap;
+
+    @CheckEmail(value = "abc.com", message = "email must ends with abc.com")
+    private String email;
+
+    @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}", message = "please use pattern XXX-XX-XX")
+    private String phoneNumber;
 
     public Employee() {
         departments = new HashMap<>();
@@ -123,8 +130,35 @@ public class Employee {
         this.languageMap = languageMap;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "Employee{" + "name='" + name + '\'' + ", surname='" + surname + '\'' + ", salary=" + salary + ", department='" + department + '\'' + ", departments=" + departments + ", carBrand='" + carBrands + '\'' + '}';
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", salary=" + salary +
+                ", department='" + department + '\'' +
+                ", departments=" + departments +
+                ", carBrand='" + carBrand + '\'' +
+                ", carBrands=" + carBrands +
+                ", languages=" + Arrays.toString(languages) +
+                ", languageMap=" + languageMap +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

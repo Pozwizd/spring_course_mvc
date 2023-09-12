@@ -10,7 +10,7 @@
 
 <%--<form:form action="showDetails" modelAttribute="employee">--%>
 <%--<form:form action="showDetails" modelAttribute="employee" method="get">--%>
-<form:form action="showDetails" modelAttribute="employee" method="post">
+<form:form action="showDetails" modelAttribute="employee">
     Name
     <form:input path="name"/>
     <form:errors path="name"/>
@@ -21,7 +21,8 @@
     <br><br>
     Salary
     <form:input path="salary"/>
-    <br><br>
+    <form:errors path="salary"/>
+    <br><br>v
     Department
     <form:select path="department">
         <form:options items="${employee.departments}"/>
@@ -34,7 +35,14 @@
     Foreign Language(s)
     <br><br>
     <form:checkboxes path="languages" items="${employee.languageMap}"/>
-
+    <br><br>
+    Phone Number
+    <form:input path="phoneNumber"/>
+    <form:errors path="phoneNumber"/>
+    <br><br>
+    Email
+    <form:input path="email"/>
+    <form:errors path="email"/>
     <br><br>
     <input type="submit" value="ok">
 </form:form>
